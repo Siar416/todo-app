@@ -9,12 +9,24 @@ import FormModal from "./components/FormModal/FormModal";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [title, setTitle] = useState("");
+  const [summary, setSummary] = useState("");
+
   return (
     <div className="App">
       <Title />
       <Tasks />
       <TaskBtn setIsOpen={setIsOpen} />
-      {isOpen && <FormModal isOpen={() => setIsOpen()} />}
+      {isOpen && (
+        <FormModal
+          isOpen={() => setIsOpen()}
+          title={title}
+          setTitle={setTitle}
+          summary={summary}
+          setSummary={setSummary}
+        />
+      )}
     </div>
   );
 }

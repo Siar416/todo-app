@@ -8,9 +8,9 @@ import { Modal } from "react-bootstrap";
 
 import { useState } from "react";
 
-const FormModal = ({ isOpen }) => {
-  const [title, setTitle] = useState("");
-  const [summary, setSummary] = useState("");
+const FormModal = ({ isOpen, title, summary, setTitle, setSummary }) => {
+  //   const [title, setTitle] = useState("");
+  //   const [summary, setSummary] = useState("");
 
   return (
     <Modal
