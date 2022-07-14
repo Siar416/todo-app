@@ -1,0 +1,16 @@
+@use "../../styles/partials/resets";
+@use "../../styles/partials/fonts";
+
+.TaskBtn {
+
+    &__btn {
+        font-family: 'Arima', cursive;
+        font-weight: 900;
+        font-size: 1rem;
+        width: 100%;
+        margin: 1.25rem 0;
+        border-radius: .3125rem;
+        border-width: .0625rem;
+        padding: .625rem;
+    }
+}
