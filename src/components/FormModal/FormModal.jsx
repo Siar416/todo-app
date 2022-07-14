@@ -6,7 +6,12 @@ import Form from "react-bootstrap/Form";
 
 import { Modal } from "react-bootstrap";
 
+import { useState } from "react";
+
 const FormModal = ({ isOpen }) => {
+  const [title, setTitle] = useState("");
+  const [summary, setSummary] = useState("");
+
   return (
     <Modal
       show={isOpen}
@@ -21,12 +26,22 @@ const FormModal = ({ isOpen }) => {
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Title</Form.Label>
-              <Form.Control type="title" placeholder="Task Title" />
+              <Form.Control
+                type="title"
+                placeholder="Task Title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Summary</Form.Label>
-              <Form.Control type="password" placeholder="Task Summary" />
+              <Form.Control
+                type="password"
+                placeholder="Task Summary"
+                value={summary}
+                onChange={(e) => setSummary(e.target.value)}
+              />
             </Form.Group>
 
             <Button variant="primary" type="submit">
