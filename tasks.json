@@ -1,6 +1,9 @@
-[{
+
+{
+    "tasks": [{
     "id": 1,
     "title": "Walk the dog",
     "summary": "Make sure to walk the dog today"
-}]
+    }]
+}
 
