@@ -1,7 +1,24 @@
-@use "../../styles/partials/resets";
-@use "../../styles/partials/fonts";
+@use "../../styles/partials/resets" as *;
+@use "../../styles/partials/fonts" as *;
 
 .Tasks__Container {
     font-family: 'Arima', cursive;
     font-weight: 500;
+    position: relative;
 }
+
+.task__item {
+    border: .0625rem solid #ededed;
+    border-radius: .3125rem;
+    padding: .625rem;
+
+    &__trash {
+        position: absolute;
+        color: red;
+        top: .625rem;
+        right: .625rem;
+        cursor: pointer;
+    }
+}
+
+

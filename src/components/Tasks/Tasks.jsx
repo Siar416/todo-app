@@ -1,5 +1,7 @@
 import "./Tasks.scss";
 
+import { FaTrash } from "react-icons/fa";
+
 import { useEffect, useState } from "react";
 
 const Tasks = () => {
@@ -23,9 +25,10 @@ const Tasks = () => {
       {tasks.length === 0 && <p>You currently have no tasks</p>}
       {tasks &&
         tasks.map((task) => (
-          <div key={task.id}>
-            <h4>{task.title}</h4>
+          <div className="task__item" key={task.id}>
+            <h5>{task.title}</h5>
             <h6>{task.summary}</h6>
+            <FaTrash className="task__item__trash" />
           </div>
         ))}
     </div>
