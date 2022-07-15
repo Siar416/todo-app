@@ -4,19 +4,19 @@
 .Tasks__Container {
     font-family: 'Arima', cursive;
     font-weight: 500;
-    position: relative;
 }
 
 .task__item {
     border: .0625rem solid #ededed;
     border-radius: .3125rem;
     padding: .625rem;
+    margin-bottom: .5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
     &__trash {
-        position: absolute;
         color: red;
-        top: .625rem;
-        right: .625rem;
         cursor: pointer;
     }
 }

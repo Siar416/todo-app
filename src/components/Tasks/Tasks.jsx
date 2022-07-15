@@ -26,9 +26,13 @@ const Tasks = () => {
       {tasks &&
         tasks.map((task) => (
           <div className="task__item" key={task.id}>
-            <h5>{task.title}</h5>
-            <h6>{task.summary}</h6>
-            <FaTrash className="task__item__trash" />
+            <div>
+              <h5>{task.title}</h5>
+              <h6>{task.summary}</h6>
+            </div>
+            <div>
+              <FaTrash className="task__item__trash" />
+            </div>
           </div>
         ))}
     </div>
