@@ -6,19 +6,38 @@ import { useEffect, useState } from "react";
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
+  const [updated, setUpdated] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       let response = await fetch("http://localhost:8080/tasks");
       const data = await response.json();
       setTasks(data);
+      setUpdated(false);
     };
     fetchData();
-  }, []);
+  }, [updated]);
 
   if (!tasks) {
     return <p>Loading...</p>;
   }
+
+  const handleDelete = async (id) => {
+    let response = await fetch(`http://localhost:8080/tasks/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log("post delete");
+      setUpdated(true);
+    } else {
+      console.log("somwthing went wrong");
+    }
+  };
 
   return (
     <div className="Tasks__Container">
@@ -31,7 +50,10 @@ const Tasks = () => {
               <h6>{task.summary}</h6>
             </div>
             <div>
-              <FaTrash className="task__item__trash" />
+              <FaTrash
+                className="task__item__trash"
+                onClick={() => handleDelete(task.id)}
+              />
             </div>
           </div>
         ))}
