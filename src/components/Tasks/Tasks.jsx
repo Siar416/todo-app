@@ -4,18 +4,19 @@ import { FaTrash } from "react-icons/fa";
 
 import { useEffect, useState } from "react";
 
-const Tasks = () => {
+const Tasks = ({ updated, setUpdated }) => {
   const [tasks, setTasks] = useState([]);
-  const [updated, setUpdated] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       let response = await fetch("http://localhost:8080/tasks");
       const data = await response.json();
       setTasks(data);
+
       setUpdated(false);
     };
     fetchData();
+    // eslint-disable-next-line
   }, [updated]);
 
   if (!tasks) {
@@ -29,7 +30,6 @@ const Tasks = () => {
         "Content-Type": "application/json",
       },
     });
-    const data = await response.json();
 
     if (response.ok) {
       console.log("post delete");

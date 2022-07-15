@@ -8,7 +8,48 @@ import { Modal } from "react-bootstrap";
 
 import { useState } from "react";
 
-const FormModal = ({ isOpen, title, summary, setTitle, setSummary }) => {
+const FormModal = ({ isOpen, setUpdated }) => {
+  const [formData, setFormData] = useState({
+    title: "",
+    summary: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { title, summary } = formData;
+
+    let response = await fetch("http://localhost:8080/tasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title, summary }),
+    });
+    const data = await response.json();
+
+    if (response.ok) {
+      setUpdated(true);
+      console.log("task was added", data);
+    } else {
+      setUpdated(false);
+      console.log("task was not added");
+    }
+
+    setFormData({
+      title: "",
+      summary: "",
+    });
+    isOpen(false);
+  };
+
   return (
     <Modal
       show={isOpen}
@@ -20,24 +61,26 @@ const FormModal = ({ isOpen, title, summary, setTitle, setSummary }) => {
       <div className="modal__wrapper">
         <Modal.Title className="modal__title">New Task</Modal.Title>
         <Modal.Body className="modal__body">
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Title</Form.Label>
               <Form.Control
-                type="title"
+                type="text"
+                name="title"
                 placeholder="Task Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={formData.title}
+                onChange={handleChange}
               />
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Summary</Form.Label>
               <Form.Control
-                type="password"
+                type="text"
+                name="summary"
                 placeholder="Task Summary"
-                value={summary}
-                onChange={(e) => setSummary(e.target.value)}
+                value={formData.summary}
+                onChange={handleChange}
               />
             </Form.Group>
 
