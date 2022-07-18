@@ -39,10 +39,8 @@ const FormModal = ({ isOpen, setUpdated }) => {
     if (response.ok) {
       toast.success("Task added");
       setUpdated(true);
-      console.log("task was added", data);
     } else {
       setUpdated(false);
-      console.log("task was not added");
     }
 
     setFormData({

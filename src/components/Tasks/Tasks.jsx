@@ -34,10 +34,8 @@ const Tasks = ({ updated, setUpdated }) => {
 
     if (response.ok) {
       toast.success("Task successfully deleted");
-      console.log("post delete");
       setUpdated(true);
     } else {
-      console.log("somwthing went wrong");
     }
   };
 
