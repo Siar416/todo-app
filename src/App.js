@@ -1,4 +1,6 @@
 import "./global.scss";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useState } from "react";
 
@@ -23,6 +25,7 @@ function App() {
           setUpdated={setUpdated}
         />
       )}
+      <ToastContainer />
     </div>
   );
 }

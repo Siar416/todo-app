@@ -1,5 +1,6 @@
 import "./FormModal.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { toast } from "react-toastify";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -36,6 +37,7 @@ const FormModal = ({ isOpen, setUpdated }) => {
     const data = await response.json();
 
     if (response.ok) {
+      toast.success("Task added");
       setUpdated(true);
       console.log("task was added", data);
     } else {
