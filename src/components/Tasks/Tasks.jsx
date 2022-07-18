@@ -1,4 +1,5 @@
 import "./Tasks.scss";
+import { toast } from "react-toastify";
 
 import { FaTrash } from "react-icons/fa";
 
@@ -32,6 +33,7 @@ const Tasks = ({ updated, setUpdated }) => {
     });
 
     if (response.ok) {
+      toast.success("Task successfully deleted");
       console.log("post delete");
       setUpdated(true);
     } else {
