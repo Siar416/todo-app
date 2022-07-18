@@ -84,7 +84,11 @@ const FormModal = ({ isOpen, setUpdated }) => {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button
+              variant="primary"
+              type="submit"
+              disabled={!formData.title || !formData.summary}
+            >
               Create New Task
             </Button>
           </Form>
